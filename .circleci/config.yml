@@ -35,7 +35,7 @@ jobs:
       - run: sudo chown -hR ftpuser:ftpgroup /home/ftpusers/
       - run: gksudo pureadmin
       - run: sudo /etc/init.d/pure-ftpd restart
-        -
+
       # Download and cache dependencies
       - restore_cache:
           keys:
