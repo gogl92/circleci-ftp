@@ -28,10 +28,7 @@ jobs:
       - run: sudo mkdir /home/ftpusers
       - run: sudo mkdir /home/ftpusers/bob
       - run: sudo pure-pw useradd bob -u ftpuser -d /home/ftpusers/bob -p $(echo 123456 | openssl passwd -1 -stdin)
-      - run: sudo pure-pw mkdb
       - run: sudo ln -s /etc/pure-ftpd/pureftpd.passwd /etc/pureftpd.passwd
-      - run: sudo ln -s /etc/pure-ftpd/pureftpd.pdb /etc/pureftpd.pdb
-      - run: sudo ln -s /etc/pure-ftpd/conf/PureDB /etc/pure-ftpd/auth/PureDB
       - run: sudo chown -hR ftpuser:ftpgroup /home/ftpusers/
       - run: sudo /etc/init.d/pure-ftpd restart
 
