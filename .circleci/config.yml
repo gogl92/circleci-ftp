@@ -20,13 +20,14 @@ jobs:
 
     steps:
       - checkout
-      - run: |
-          docker pull stilliard/pure-ftpd:hardened
-          docker run -d --name ftpd_server -p 21:21 -p 30000-30009:30000-30009 -e "PUBLICHOST=localhost" stilliard/pure-ftpd:hardened
-          docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
-          pure-pw useradd bob -f /etc/pure-ftpd/passwd/pureftpd.passwd -m -u ftpuser -d /home/ftpusers/bob
-          exit
-          docker run -e FTP_USER_NAME=bob -e FTP_USER_PASS=12345 -e FTP_USER_HOME=/home/bob stilliard/pure-ftpd
+      - docker: # use the docker executor type; machine and macos executors are also supported
+          - image: stilliard/pure-ftpd:hardened # the primary container, where your job's commands are run
+            - run: |
+                docker run -d --name ftpd_server -p 21:21 -p 30000-30009:30000-30009 -e "PUBLICHOST=localhost" stilliard/pure-ftpd:hardened
+                docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
+                pure-pw useradd bob -f /etc/pure-ftpd/passwd/pureftpd.passwd -m -u ftpuser -d /home/ftpusers/bob
+                exit
+                docker run -e FTP_USER_NAME=bob -e FTP_USER_PASS=12345 -e FTP_USER_HOME=/home/bob stilliard/pure-ftpd
 
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
