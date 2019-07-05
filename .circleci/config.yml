@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: circleci/php:7.1-node-browsers
+      - image: us.gcr.io/raven-185914/api-dev
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -30,8 +30,7 @@ jobs:
       - run: sudo pure-pw useradd bob -u ftpuser -d /home/ftpusers/bob -p $(echo 123456 | openssl passwd -1 -stdin)
       - run: sudo ln -s /etc/pure-ftpd/pureftpd.passwd /etc/pureftpd.passwd
       - run: sudo chown -hR ftpuser:ftpgroup /home/ftpusers/
-      - run: sudo reboot
-      #- run: sudo /etc/init.d/pure-ftpd restart
+      - run: sudo /etc/init.d/pure-ftpd restart --without-capabilities
 
       # Download and cache dependencies
       - restore_cache:
