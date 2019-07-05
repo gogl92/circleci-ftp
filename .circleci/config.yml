@@ -22,7 +22,7 @@ jobs:
       - checkout
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
-      - run: sudo apt-get install pure-ftpd pureadmin
+      - run: sudo apt install pure-ftpd
       - run: sudo groupadd ftpgroup
       - run: sudo useradd -g ftpgroup -d /dev/null -s /etc ftpuser
       - run: sudo mkdir /home/ftpusers
@@ -33,7 +33,6 @@ jobs:
       - run: sudo ln -s /etc/pure-ftpd/pureftpd.pdb /etc/pureftpd.pdb
       - run: sudo ln -s /etc/pure-ftpd/conf/PureDB /etc/pure-ftpd/auth/PureDB
       - run: sudo chown -hR ftpuser:ftpgroup /home/ftpusers/
-      - run: gksudo pureadmin
       - run: sudo /etc/init.d/pure-ftpd restart
 
       # Download and cache dependencies
