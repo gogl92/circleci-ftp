@@ -1,0 +1,16 @@
+{
+    "name": "luisarmando/circleci-ftp",
+    "description": "Test FTP server creation in circle ci",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Starfish",
+            "email": "luisarmando@starfish.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "nicolab/php-ftp-client": "dev-master"
+    }
+}
