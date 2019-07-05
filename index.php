@@ -6,7 +6,7 @@ include './vendor/autoload.php';
 
 $ftp = new FtpClient();
 $ftp->connect('127.0.0.1:21');
-$ftp->login('user', 'HelloWorld1234');
+$ftp->login('bob', '123456');
 // scan the current directory and returns the details of each item
 $items = $ftp->scanDir();
 
