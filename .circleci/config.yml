@@ -21,7 +21,6 @@ jobs:
     steps:
       - checkout
       - run: sudo apt install pure-ftpd
-      - run: sudo /etc/init.d/pure-ftpd restart
       - run: PureDB /etc/pureftpd.pdb
       - run: pure-pw useradd ravenftpuser -u ftp -d /srv/ftp
       - run: echo "/bin/false" >> /etc/shells
