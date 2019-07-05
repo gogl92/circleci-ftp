@@ -22,7 +22,7 @@ jobs:
       - checkout
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
-      - run: sudo apt install pure-ftpd
+      - run: sudo apt install pure-ftpd --without-capabilities
       - run: sudo groupadd ftpgroup
       - run: sudo useradd -g ftpgroup -d /dev/null -s /etc ftpuser
       - run: sudo mkdir /home/ftpusers
