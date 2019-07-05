@@ -22,7 +22,6 @@ jobs:
       - checkout
       - run: sudo apt install pure-ftpd
       - run: /etc/init.d/pure-ftpd restart
-      - run: docker run -e FTP_USER_NAME=bob -e FTP_USER_PASS=12345 -e FTP_USER_HOME=/home/bob stilliard/pure-ftpd
       - run: PureDB /etc/pureftpd.pdb
       - run: pure-pw useradd ravenftpuser -u ftp -d /srv/ftp
       - run: echo "/bin/false" >> /etc/shells
